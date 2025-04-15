@@ -10,7 +10,7 @@ public:
 	~Queue();
 
 	bool isEmpty();
-	void enqueue(int value);
+	void enqueue(double value);
 	double dequeue();
 
 private:

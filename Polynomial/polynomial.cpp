@@ -1,6 +1,6 @@
 #include "polynomial.h"
 #include <iostream>
-#include "absolute.h"
+
 Polynomial::Polynomial(PolyNode* header) :m_head(header)
 {
 }

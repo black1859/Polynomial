@@ -21,7 +21,7 @@ Queue* findSol(int a, int b, double steps, Polynomial* p) {
 
 	double x = a;
 	while (x <= b) {
-		value = p->substitute(a);
+		value = p->substitute(x);
 		if ((value < 0) && sign_bit == PLUS) {
 			results->enqueue(x);
 			sign_bit = MINUS;

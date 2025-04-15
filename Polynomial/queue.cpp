@@ -19,7 +19,7 @@ bool Queue::isEmpty()
 	return m_head == nullptr;
 }
 
-void Queue::enqueue(int value)
+void Queue::enqueue(double value)
 {
 	if (isEmpty()) {
 		m_head = new Node(value);
