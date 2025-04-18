@@ -21,13 +21,13 @@
     <ClInclude Include="polynomial.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="absolute.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="node.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="queue.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="find_functions.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="absolute.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="node.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="queue.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="find_functions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,6 +20,9 @@ public:
 	void integrate();
 	double substitute(double value);
 
+	PolyNode operator+(PolyNode& other);
+	PolyNode operator-(PolyNode& other);
+
 	bool isZero();
 	void print();
 	PolyNode* copy();

@@ -2,63 +2,11 @@
 #include "polynomial_node.h"
 #include "polynomial.h"
 #include "queue.h"
+#include "find_functions.h"
 
 #define STEPS 0.00001
-#define PLUS true
-#define MINUS false
-
-Queue* findSol(int a, int b, double steps, Polynomial* p) {
-	double value = p->substitute(a);
-	bool sign_bit = 0;
-	if (value > 0) {
-		sign_bit = PLUS;
-	}
-	else if (value < 0) {
-		sign_bit = MINUS;
-	}
-
-	Queue* results = new Queue();
-
-	double x = a;
-	while (x <= b) {
-		value = p->substitute(x);
-		if ((value < 0) && sign_bit == PLUS) {
-			results->enqueue(x);
-			sign_bit = MINUS;
-		}
-		else if ((value > 0) && sign_bit == MINUS) {
-			results->enqueue(x);
-			sign_bit = PLUS;
-		}
-		else if (value == 0)
-		{
-			results->enqueue(x);
-			sign_bit = not sign_bit;
-		}
-		 x += steps;
-	}
-
-	return results;
-}
-
-double findMin(int a, int b, double steps, Polynomial* p) {
-	double approximation = p->substitute(a);
-	double result_x = a;
-
-	double x = a;
-	while (x <= b) {
-		x += steps;
-		double value = p->substitute(x);
-		if (value < approximation) {
-			approximation = value;
-			result_x = x;
-		}
-	}
-	return result_x;
-}
 
 int main(void) {
-	Queue* sols;
 
 	Polynomial p1;
 	p1.addTerm(4, 6.7);
@@ -70,16 +18,41 @@ int main(void) {
 
 	double k = findMin(-10, 10, STEPS, &p1);
 	std::cout <<"Min: x = " << k << " y = " << p1.substitute(k) << "\n";
-	
+	//과제 1
+	Queue* sols;
 	sols = findSol(-10, 10, STEPS, &p1);
 	double value = sols->dequeue();
-
 	while (value != -123456)
 	{
 		std::cout << value << " ";
 		value = sols->dequeue();
 	}
-
 	delete(sols);
+
+	//과제 2
+	std::cout << "\n\n";
+	
+	std::cout << "p2 = ";
+	Polynomial p2;
+	p2.addTerm(7, 1);
+	p2.addTerm(2, 1);
+	p2.print();
+	std::cout << "p3 = ";
+	Polynomial p3;
+	p3.addTerm(9, 1);
+	p3.addTerm(5, 1);
+	p3.print();
+	std::cout << "p4 = ";
+	Polynomial p4;
+	p4.addTerm(7, 1);
+	p4.addTerm(2, 1);
+	p4.print();
+	std::cout << "p2 + p3 = ";
+	p2 + p3;
+	p2.print();
+	std::cout << "p3 - p4 = ";
+	p3 - p4;
+	p3.print();
+
 	return 0;
 }

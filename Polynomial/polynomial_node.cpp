@@ -71,6 +71,18 @@ double PolyNode::substitute(double value)
 	return coefficient * pow(value, exponent);
 }
 
+PolyNode PolyNode::operator+(PolyNode& other)
+{
+	if (this->exponent != other.getExponent()) exit(1);
+	return PolyNode(this->exponent, this->coefficient + other.getCoefficient());
+}
+
+PolyNode PolyNode::operator-(PolyNode& other)
+{
+	if (this->exponent != other.getExponent()) exit(1);
+	return PolyNode(this->exponent, this->coefficient - other.getCoefficient());
+}
+
 bool PolyNode::isZero()
 {
 	return coefficient == 0;

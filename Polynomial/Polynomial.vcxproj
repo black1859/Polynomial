@@ -127,14 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="absolute.h" />
+    <ClInclude Include="find_functions.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="polynomial.h" />
     <ClInclude Include="polynomial_node.h" />
     <ClInclude Include="queue.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="absolute.cpp" />
+    <ClCompile Include="find_functions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="polynomial.cpp" />

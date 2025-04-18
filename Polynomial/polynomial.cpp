@@ -27,13 +27,24 @@ void Polynomial::addTerm(int expo, double coef)
 		return;
 	}
 
+	if (expo > m_head->getExponent()) {
+		PolyNode* new_head = new PolyNode(expo, coef, m_head);
+		m_head = new_head;
+		return;
+	}
+
 	PolyNode* before = m_head;
 	PolyNode* current = before->getNext();
 	while (before->getNext() != nullptr)
 	{
-		before = before->getNext();
+		if (expo > current->getExponent()) {
+			before->setNext(new PolyNode(expo, coef,current));
+			return;
+		}
+		before = current;
+		current = current->getNext();
 	}
-	before->setNext(new PolyNode(expo, coef));
+	before->setNext(new PolyNode(expo, coef, current));
 }
 
 void Polynomial::delTerm(int expo)
@@ -75,6 +86,31 @@ PolyNode* Polynomial::searchTerm(int expo)
 		current = current->getNext();
 	}
 	return nullptr;
+}
+
+void Polynomial::operator+(Polynomial& other)
+{
+	PolyNode* current = other.getHead();
+	while (current)
+	{
+		addTerm(current->getExponent(), current->getCoefficient());
+		current = current->getNext();
+	}
+}
+
+void Polynomial::operator-(Polynomial& other)
+{
+	PolyNode* current = other.getHead();
+	while (current)
+	{
+		addTerm(current->getExponent(), current->getCoefficient()*(-1));
+		current = current->getNext();
+	}
+}
+
+PolyNode* Polynomial::getHead()
+{
+	return m_head;
 }
 
 void Polynomial::setTerm(int expo, double new_coef)
